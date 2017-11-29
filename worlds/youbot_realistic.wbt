@@ -1,0 +1,60 @@
+#VRML_SIM V7.4.3 utf8
+WorldInfo {
+  info [
+    "Simulation showing the KUKA youBot model"
+    "Author: Fabien Rohrer <fabien.rohrer@cyberbotics.com>"
+    "Date: 24 May 2011"
+  ]
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation 0.0511013 0.982835 0.177269 3.71169
+  position -0.668662 0.789395 -1.09725
+  follow "robot"
+}
+Background {
+  skyColor [
+    0.580392 0.705882 0.772549
+  ]
+}
+DirectionalLight {
+  ambientIntensity 1
+  direction -0.22 -1 0.56
+  castShadows TRUE
+}
+DirectionalLight {
+  direction 0.65 -1 0.93
+  intensity 0.4
+}
+DEF GROUND Solid {
+  children [
+    DEF GROUND_SHAPE Shape {
+      appearance Appearance {
+        texture ImageTexture {
+          url [
+            "textures/parquetry.png"
+          ]
+        }
+        textureTransform TextureTransform {
+          scale 200 200
+        }
+      }
+      geometry Plane {
+        size 100 100
+      }
+    }
+  ]
+  boundingObject USE GROUND_SHAPE
+}
+WoodBox {
+  translation 0.605448 0.2 -0.00121984
+  boxSize 0.6 0.4 0.6
+}
+KukaBox {
+  translation 0.472629 0.41876 -0.00710068
+}
+YouBot {
+  translation 0 0.102838 0
+  rotation 1 0 0 -1.5708
+  controller "youbot"
+}

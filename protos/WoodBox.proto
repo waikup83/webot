@@ -1,0 +1,42 @@
+#VRML_SIM V7.2.5 utf8
+# A wood box
+#
+# Author: fabien.rohrer@cyberbotics.com
+
+PROTO WoodBox [
+  field SFVec3f translation 0 0.3 0
+  field SFRotation rotation 0 1 0 0
+  field SFVec3f boxSize 0.6 0.6 0.6
+  field SFColor color 1 1 1
+  field MFString textureUrl "textures/wood_box.png"
+  field SFBool locked FALSE
+]
+{
+Solid {
+  translation IS translation
+  rotation IS rotation
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor IS color
+          specularColor 0.3 0.3 0.3
+        }
+        texture ImageTexture {
+          url IS textureUrl
+        }
+      }
+      geometry Box {
+        size IS boxSize
+      }
+    }
+  ]
+  boundingObject Box {
+    size IS boxSize
+  }
+  physics Physics {
+    density 100
+  }
+  locked IS locked
+}
+}

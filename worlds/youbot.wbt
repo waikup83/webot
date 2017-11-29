@@ -1,0 +1,94 @@
+#VRML_SIM V7.4.3 utf8
+WorldInfo {
+  info [
+    "Simulation of the KUKA youBot robot."
+    "This model includes an accurate and fast simulation of the Meccanum wheels."
+    "The robot can be equiped with various sensors (including the Microsoft Kinect) and configured with zero, one or two arms."
+    "Author: Fabien Rohrer <fabien.rohrer@cyberbotics.com>"
+    "Date: 24 May 2011"
+  ]
+  title "KUKA youBot"
+  physics "youbot_swedish_wheels"
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation 0.596629 -0.694692 -0.401793 4.79484
+  position 4.05257 4.98355 2.03506
+  follow "robot"
+}
+Background {
+  skyColor [
+    0.580392 0.705882 0.772549
+  ]
+}
+DirectionalLight {
+  ambientIntensity 1
+  direction -0.22 -1 0.56
+  castShadows TRUE
+}
+DirectionalLight {
+  direction 0.65 -1 0.93
+  intensity 0.4
+}
+DEF GROUND Solid {
+  translation 0.00747729 -1.45717e-16 0.0036006
+  children [
+    DEF GROUND_SHAPE Shape {
+      appearance Appearance {
+        texture ImageTexture {
+          url [
+            "textures/parquetry.png"
+          ]
+        }
+        textureTransform TextureTransform {
+          scale 200 200
+        }
+      }
+      geometry Plane {
+        size 100 100
+      }
+    }
+  ]
+  boundingObject USE GROUND_SHAPE
+}
+WoodBox {
+  translation -2.21111 0.16 -0.0638331
+  rotation 0 -1 0 5.75959
+  boxSize 0.2 0.3 0.6
+}
+WoodBox {
+  translation -0.863991 0.16 1.95742
+  rotation 0 -1 0 2.618
+  boxSize 0.2 0.3 0.6
+}
+WoodBox {
+  translation 0.738263 0.11 2.29452
+  rotation 0 1 0 1.0472
+  boxSize 0.2 0.3 0.5
+}
+WoodBox {
+  translation 0.382406 0.16 -1.58886
+  rotation 0 1 0 5.23599
+  boxSize 0.2 0.3 0.4
+}
+KukaBox {
+  translation -0.113299 0.15876 -0.0090682
+}
+KukaBox {
+  translation -0.0636397 0.15876 -0.06648
+  rotation 0 1 0 6.02139
+}
+KukaBox {
+  translation -0.073299 0.15876 0.0709318
+}
+YouBot {
+  translation 0 0.102838 0
+  controller "youbot"
+  bodySlot [
+    Hokuyo_URG04LXUG01 {
+      translation 0.3 0 -0.045
+      rotation 0.57735 -0.57735 -0.57735 2.0944
+    }
+  ]
+  fastWheels TRUE
+}
